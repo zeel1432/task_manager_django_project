@@ -10,9 +10,11 @@ from rest_framework import status
 from .models import Task
 from .serializers import TaskSerializer
 
+from .permissions import IsOwner
+
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def get_queryset(self):
 
